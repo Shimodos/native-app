@@ -1,35 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Dimensions, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { Input } from './shared/input/input';
+
+const onClick = () => {
+  alert('Button Pressed!');
+};
 
 export default function App() {
+  const width = Dimensions.get('window').width;
+
   return (
     <View style={styles.container}>
-      <View style={styles.flexContainer}>
-        <Text style={styles.textStyle}>Hello, world!</Text>
-        {/* <TextInput style={styles.input} placeholder="Type here..." /> */}
-      </View>
-      <View style={styles.button}>
-        <Button title="Press me" onPress={() => alert('Button pressed!')} />
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          backgroundColor: 'lightgray',
-          marginTop: 20,
-          alignItems: 'flex-end',
-          // justifyContent: 'space-around',
-          height: 400,
-        }}
-      >
-        <View style={{ backgroundColor: 'red', flexBasis: 150, flexGrow: 1, height: 100 }}>
-          <Text>Red Box</Text>
+      <View style={styles.content}>
+        {/* <Image style={styles.logo} source={require('./assets/logo.png')} resizeMode="contain" /> */}
+        <Text style={styles.textStyle}>Anti Navigator</Text>
+        <View style={styles.form}>
+          <Input placeholder="Email" />
+          <Input placeholder="Password" />
+          <Button title="Login" onPress={onClick} />
         </View>
-        <View style={{ backgroundColor: 'green', flexBasis: 100, flexGrow: 1, height: 100 }}>
-          <Text>Green Box</Text>
-        </View>
-        <View style={{ backgroundColor: 'blue', flexBasis: 100, flexGrow: 1, height: 100 }}>
-          <Text>Blue Box</Text>
-        </View>
+        <Text style={styles.textStyle}>Recover password</Text>
       </View>
     </View>
   );
@@ -37,32 +27,31 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
-  },
-  flexContainer: {
-    backgroundColor: 'lightgray',
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 10,
     justifyContent: 'center',
-    height: 60,
+    alignItems: 'center',
+    flex: 1,
+    padding: 55,
+    backgroundColor: '#1E1D29',
   },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    width: 200,
-    borderRadius: 10,
-  },
-  button: {
-    borderRadius: 10,
-    marginTop: 20,
+  content: {
+    alignItems: 'center',
+    gap: 50,
   },
   textStyle: {
-    backgroundColor: 'lightgray',
     color: '#3184f9',
     fontSize: 24,
     fontWeight: 'bold',
+  },
+  form: {
+    alignSelf: 'stretch',
+    gap: 16,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'none',
+    backgroundColor: '#2E2D3D',
+  },
+  logo: {
+    width: 220,
   },
 });

@@ -5,7 +5,10 @@
       "Bash(npx expo-doctor@latest)",
       "Bash(npx expo install:*)",
       "Bash(npm install:*)",
-      "Bash(npx expo:*)"
+      "Bash(npx expo:*)",
+      "Read(//c/OpenServer/domains/localhost/**)",
+      "Read(//c/OpenServer/domains/**)",
+      "Read(//c/Users/admin/**)"
     ],
     "deny": [],
     "ask": []
