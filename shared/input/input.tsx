@@ -1,9 +1,10 @@
 import { StyleSheet, TextInput, View, TextInputProps } from 'react-native';
+import { Colors, Gaps, Radius } from '../tokens';
 
 export function Input(props: TextInputProps) {
   return (
     <View style={styles.form}>
-      <TextInput style={styles.input} placeholderTextColor={'#888'} {...props} />
+      <TextInput style={styles.input} placeholderTextColor={Colors.gray} {...props} />
     </View>
   );
 }
@@ -11,15 +12,15 @@ export function Input(props: TextInputProps) {
 const styles = StyleSheet.create({
   form: {
     alignSelf: 'stretch',
-    gap: 16,
+    gap: Gaps.g16,
   },
   input: {
     borderColor: 'none',
-    backgroundColor: '#2E2D3D',
+    backgroundColor: Colors.violetDark,
     height: 58,
-    borderRadius: 10,
+    borderRadius: Radius.r10,
     paddingHorizontal: 24,
     fontSize: 16,
-    color: '#fff',
+    color: Colors.gray,
   },
 });

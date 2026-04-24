@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, Dimensions, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Input } from './shared/input/input';
+import { Colors, Gaps } from './shared/tokens';
+import EyeClosedIcon from './assets/icons/eye-closed';
+import EyeOpenedIcon from './assets/icons/eye-opened';
 
 const onClick = () => {
   alert('Button Pressed!');
@@ -17,6 +20,8 @@ export default function App() {
         <View style={styles.form}>
           <Input placeholder="Email" />
           <Input placeholder="Password" />
+          <EyeClosedIcon />
+          <EyeOpenedIcon />
           <Button title="Login" onPress={onClick} />
         </View>
         <Text style={styles.textStyle}>Recover password</Text>
@@ -31,25 +36,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     padding: 55,
-    backgroundColor: '#1E1D29',
+    backgroundColor: Colors.balck,
   },
   content: {
     alignItems: 'center',
-    gap: 50,
+    gap: Gaps.g60,
   },
   textStyle: {
-    color: '#3184f9',
+    color: Colors.text,
     fontSize: 24,
     fontWeight: 'bold',
   },
   form: {
     alignSelf: 'stretch',
-    gap: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'none',
-    backgroundColor: '#2E2D3D',
+    gap: Gaps.g16,
   },
   logo: {
     width: 220,
