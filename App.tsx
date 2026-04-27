@@ -2,8 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, Dimensions, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { Input } from './shared/input/input';
 import { Colors, Gaps } from './shared/tokens';
-import EyeClosedIcon from './assets/icons/eye-closed';
-import EyeOpenedIcon from './assets/icons/eye-opened';
+import { Button as CustomButton } from './shared/buttons/button';
 
 const onClick = () => {
   alert('Button Pressed!');
@@ -20,7 +19,7 @@ export default function App() {
         <View style={styles.form}>
           <Input placeholder="Email" />
           <Input placeholder="Password" isPassword />
-          <Button title="Login" onPress={onClick} />
+          <CustomButton title="Login" onPress={onClick} />
         </View>
         <Text style={styles.textStyle}>Recover password</Text>
       </View>

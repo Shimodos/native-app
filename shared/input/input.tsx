@@ -4,7 +4,7 @@ import { Colors, Gaps, Radius } from '../tokens';
 import EyeClosedIcon from '../../assets/icons/eye-closed';
 import EyeOpenedIcon from '../../assets/icons/eye-opened';
 
-export function Input(props: TextInputProps & { isPassword?: boolean }) {
+export function Input({ ...props }: TextInputProps & { isPassword?: boolean }) {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   return (
     <View style={styles.form}>
