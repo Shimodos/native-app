@@ -1,21 +1,53 @@
-import { Pressable, PressableProps, StyleSheet, View, Text, Animated } from 'react-native';
+import { useRef } from 'react';
+import {
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  Text,
+  Animated,
+  GestureResponderEvent,
+} from 'react-native';
 import { Colors, FontSizes, Radius } from '../tokens';
 
 export function Button({ title, ...props }: PressableProps & { title: string }) {
-  const animaatedValue = new Animated.ValueXY({ x: 0, y: 0 });
+  const animatedValue = useRef(new Animated.Value(100)).current;
+  const color = animatedValue.interpolate({
+    inputRange: [0, 100],
+    outputRange: [Colors.primaryHover, Colors.primary],
+  });
 
-  Animated.timing(animaatedValue, {
-    toValue: { x: 0, y: 20 },
-    duration: 500,
-    useNativeDriver: true,
-  }).start();
+  const fadeIn = (e: GestureResponderEvent) => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      useNativeDriver: false,
+      duration: 300,
+    }).start();
+    props.onPressIn && props.onPressIn(e);
+  };
+
+  const fadeOut = (e: GestureResponderEvent) => {
+    Animated.timing(animatedValue, {
+      toValue: 100,
+      useNativeDriver: false,
+      duration: 300,
+    }).start();
+    props.onPressOut && props.onPressOut(e);
+  };
 
   return (
-    <Pressable {...props}>
+    <Pressable
+      {...props}
+      onPressIn={(e) => {
+        fadeIn(e);
+      }}
+      onPressOut={(e) => {
+        fadeOut(e);
+      }}
+    >
       <Animated.View
         style={{
           ...styles.button,
-          transform: [{ translateX: animaatedValue.x }, { translateY: animaatedValue.y }],
+          backgroundColor: color,
         }}
       >
         <Text style={styles.text}>{title}</Text>
@@ -26,7 +58,6 @@ export function Button({ title, ...props }: PressableProps & { title: string }) 
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.primary,
     height: 58,
     borderRadius: Radius.r10,
     justifyContent: 'center',

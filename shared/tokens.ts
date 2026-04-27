@@ -3,7 +3,7 @@ export const Colors = {
   gray: '#afb2bf',
   violetDark: '#2e2d3d',
   primary: '#6c38cc',
-  primaryHover: '#5a2eb0',
+  primaryHover: '#4a2593',
   link: '#a97bff',
   text: '#3184f9',
 };
