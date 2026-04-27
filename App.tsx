@@ -19,9 +19,7 @@ export default function App() {
         <Text style={styles.textStyle}>Anti Navigator</Text>
         <View style={styles.form}>
           <Input placeholder="Email" />
-          <Input placeholder="Password" />
-          <EyeClosedIcon />
-          <EyeOpenedIcon />
+          <Input placeholder="Password" isPassword />
           <Button title="Login" onPress={onClick} />
         </View>
         <Text style={styles.textStyle}>Recover password</Text>
