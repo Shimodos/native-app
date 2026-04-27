@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, Dimensions, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { Alert, Platform, StyleSheet, Text, ToastAndroid, View } from 'react-native';
 import { Input } from './shared/input/input';
 import { Colors, Gaps } from './shared/tokens';
 import { Button as CustomButton } from './shared/buttons/button';
 
 const onClick = () => {
-  alert('Button Pressed!');
+  Alert.alert('Title', 'Button Pressed!', [
+    {
+      text: 'OK',
+      onPress: () => console.log('OK Pressed'),
+      style: 'default',
+    },
+  ]);
+
+  // if (Platform.OS === 'android') {
+  //   ToastAndroid.showWithGravity('Button Pressed!', ToastAndroid.SHORT, ToastAndroid.CENTER);
+  // }
 };
 
 export default function App() {
-  const width = Dimensions.get('window').width;
-
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {/* <Image style={styles.logo} source={require('./assets/logo.png')} resizeMode="contain" /> */}
         <Text style={styles.textStyle}>Anti Navigator</Text>
         <View style={styles.form}>
           <Input placeholder="Email" />
