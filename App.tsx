@@ -2,6 +2,8 @@ import { Alert, Platform, StyleSheet, Text, ToastAndroid, View } from 'react-nat
 import { Input } from './shared/input/input';
 import { Colors, Gaps } from './shared/tokens';
 import { Button as CustomButton } from './shared/buttons/button';
+import { ErrorNotification } from './shared/ErrorNotification/ErrorNotification';
+import { useState } from 'react';
 
 const onClick = () => {
   Alert.alert('Title', 'Button Pressed!', [
@@ -11,21 +13,24 @@ const onClick = () => {
       style: 'default',
     },
   ]);
-
-  // if (Platform.OS === 'android') {
-  //   ToastAndroid.showWithGravity('Button Pressed!', ToastAndroid.SHORT, ToastAndroid.CENTER);
-  // }
 };
 
 export default function App() {
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+
+  const alert = () => {
+    setErrorMessage('An error occurred. Please try again later.');
+  };
+
   return (
     <View style={styles.container}>
+      <ErrorNotification message={errorMessage} />
       <View style={styles.content}>
         <Text style={styles.textStyle}>Anti Navigator</Text>
         <View style={styles.form}>
           <Input placeholder="Email" />
           <Input placeholder="Password" isPassword />
-          <CustomButton title="Login" onPress={onClick} />
+          <CustomButton title="Login" onPress={alert} />
         </View>
         <Text style={styles.textStyle}>Recover password</Text>
       </View>
