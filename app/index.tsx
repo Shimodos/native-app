@@ -4,8 +4,9 @@ import { Colors, Gaps } from '../shared/tokens';
 import { Button as CustomButton } from '../shared/buttons/button';
 import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification';
 import { useState } from 'react';
+import { Link } from 'expo-router';
 
-export default function App() {
+export default function Login() {
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
 	const alert = () => {
@@ -25,7 +26,9 @@ export default function App() {
 					<Input placeholder="Password" isPassword />
 					<CustomButton title="Login" onPress={alert} />
 				</View>
-				<Text style={styles.textStyle}>Recover password</Text>
+				<Link href="/restore/restore">
+					<Text style={styles.textStyleRestore}>Recover password</Text>
+				</Link>
 			</View>
 		</View>
 	);
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		flex: 1,
 		padding: 55,
-		backgroundColor: Colors.balck,
+		backgroundColor: Colors.black,
 	},
 	content: {
 		alignItems: 'center',
@@ -51,5 +54,9 @@ const styles = StyleSheet.create({
 	form: {
 		alignSelf: 'stretch',
 		gap: Gaps.g16,
+	},
+	textStyleRestore: {
+		color: Colors.primary,
+		fontSize: 16,
 	},
 });
