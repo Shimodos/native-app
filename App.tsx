@@ -5,21 +5,14 @@ import { Button as CustomButton } from './shared/buttons/button';
 import { ErrorNotification } from './shared/ErrorNotification/ErrorNotification';
 import { useState } from 'react';
 
-const onClick = () => {
-  Alert.alert('Title', 'Button Pressed!', [
-    {
-      text: 'OK',
-      onPress: () => console.log('OK Pressed'),
-      style: 'default',
-    },
-  ]);
-};
-
 export default function App() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
   const alert = () => {
     setErrorMessage('An error occurred. Please try again later.');
+    setTimeout(() => {
+      setErrorMessage(undefined);
+    }, 3000);
   };
 
   return (
