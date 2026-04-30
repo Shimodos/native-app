@@ -26,7 +26,7 @@ export default function Login() {
 					<Input placeholder="Password" isPassword />
 					<CustomButton title="Login" onPress={alert} />
 				</View>
-				<Link href="/restore/restore">
+				<Link href="/restore">
 					<Text style={styles.textStyleRestore}>Recover password</Text>
 				</Link>
 			</View>
