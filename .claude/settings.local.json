@@ -11,7 +11,9 @@
       "Read(//c/Users/admin/**)",
       "Bash(npm i *)",
       "Bash(npx eslint *)",
-      "Bash(npm ls *)"
+      "Bash(npm ls *)",
+      "Bash(npx tsc *)",
+      "Bash(npx expo-doctor *)"
     ],
     "deny": [],
     "ask": []

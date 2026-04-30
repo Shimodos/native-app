@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { Input } from './shared/input/input';
-import { Colors, Gaps } from './shared/tokens';
-import { Button as CustomButton } from './shared/buttons/button';
-import { ErrorNotification } from './shared/ErrorNotification/ErrorNotification';
+import { Input } from '../shared/input/input';
+import { Colors, Gaps } from '../shared/tokens';
+import { Button as CustomButton } from '../shared/buttons/button';
+import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification';
 import { useState } from 'react';
 
 export default function App() {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 	},
 	content: {
 		alignItems: 'center',
-		gap: Gaps.g60,
+		gap: Gaps.g16,
 	},
 	textStyle: {
 		color: Colors.text,
