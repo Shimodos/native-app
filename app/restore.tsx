@@ -1,14 +1,14 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
-import { Colors } from '../shared/tokens';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { router } from 'expo-router';
+import { Colors, Gaps } from '../shared/tokens';
 
 export default function Restore() {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>Restore</Text>
-			<Link href="/">
+			<Pressable onPress={() => router.back()}>
 				<Text style={styles.textBack}>Go back to login</Text>
-			</Link>
+			</Pressable>
 		</View>
 	);
 }
@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		flex: 1,
+		gap: Gaps.g16,
+		backgroundColor: Colors.black,
 	},
 	text: {
 		fontSize: 24,
@@ -26,6 +28,6 @@ const styles = StyleSheet.create({
 	},
 	textBack: {
 		fontSize: 16,
-		color: Colors.white,
+		color: Colors.link,
 	},
 });
