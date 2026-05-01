@@ -1,10 +1,11 @@
-import { Stack } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { ThemeProvider, DarkTheme } from '@react-navigation/native';
 import { Colors } from '../shared/tokens';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
+import { useEffect } from 'react';
 
 const navTheme = {
 	...DarkTheme,
@@ -15,11 +16,19 @@ const navTheme = {
 	},
 };
 
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
 	const [loaded, error] = useFonts({
 		FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
 		FiraSansSemiBold: require('../assets/fonts/FiraSans-SemiBold.ttf'),
 	});
+
+	useEffect(() => {
+		if (loaded) {
+			SplashScreen.hideAsync();
+		}
+	}, [loaded]);
 
 	if (!loaded) {
 		return null;
