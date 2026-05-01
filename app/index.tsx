@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Input } from '../shared/input/input';
-import { Colors, Gaps } from '../shared/tokens';
+import { Colors, Fonts, Gaps } from '../shared/tokens';
 import { Button as CustomButton } from '../shared/buttons/button';
 import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ export default function Login() {
 		<View style={styles.container}>
 			<ErrorNotification message={errorMessage} />
 			<View style={styles.content}>
-				<Text style={styles.textStyle}>Anti Navigator</Text>
+				<Text style={styles.textStyle}>AntiNavi</Text>
 				<View style={styles.form}>
 					<Input placeholder="Email" />
 					<Input placeholder="Password" isPassword />
@@ -48,8 +48,9 @@ const styles = StyleSheet.create({
 	},
 	textStyle: {
 		color: Colors.text,
-		fontSize: 24,
+		fontSize: 40,
 		fontWeight: 'bold',
+		fontFamily: Fonts.semibold,
 	},
 	form: {
 		alignSelf: 'stretch',
@@ -58,5 +59,6 @@ const styles = StyleSheet.create({
 	textStyleRestore: {
 		color: Colors.primary,
 		fontSize: 16,
+		fontFamily: Fonts.regular,
 	},
 });

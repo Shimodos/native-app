@@ -25,3 +25,8 @@ export const FontSizes = {
 	fs18: 18,
 	fs24: 24,
 };
+
+export const Fonts = {
+	regular: 'FiraSans',
+	semibold: 'FiraSansSemiBold',
+};

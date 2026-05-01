@@ -7,7 +7,7 @@ import {
 	Animated,
 	GestureResponderEvent,
 } from 'react-native';
-import { Colors, FontSizes, Radius } from '../tokens';
+import { Colors, Fonts, FontSizes, Radius } from '../tokens';
 
 export function Button({ title, ...props }: PressableProps & { title: string }) {
 	const animatedValue = useRef(new Animated.Value(100)).current;
@@ -67,5 +67,6 @@ const styles = StyleSheet.create({
 	text: {
 		color: Colors.gray,
 		fontSize: FontSizes.fs18,
+		fontFamily: Fonts.semibold,
 	},
 });
