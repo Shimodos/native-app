@@ -4,7 +4,7 @@ import { Colors, Fonts, Gaps } from '../shared/tokens';
 import { Button as CustomButton } from '../shared/buttons/button';
 import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification';
 import { useState } from 'react';
-import { Link } from 'expo-router';
+import { CustomLink } from '../shared/CustomLink/CustomLink';
 
 export default function Login() {
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
@@ -26,9 +26,7 @@ export default function Login() {
 					<Input placeholder="Password" isPassword />
 					<CustomButton title="Login" onPress={alert} />
 				</View>
-				<Link href="/restore">
-					<Text style={styles.textStyleRestore}>Recover password</Text>
-				</Link>
+				<CustomLink href="/restore" text="Recover password" />
 			</View>
 		</View>
 	);
@@ -55,10 +53,5 @@ const styles = StyleSheet.create({
 	form: {
 		alignSelf: 'stretch',
 		gap: Gaps.g16,
-	},
-	textStyleRestore: {
-		color: Colors.primary,
-		fontSize: 16,
-		fontFamily: Fonts.regular,
 	},
 });
