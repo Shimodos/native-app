@@ -3,3 +3,8 @@ export interface IAuthResponse {
 	isLoading: boolean;
 	error: string | null;
 }
+
+export interface IloginRequest {
+	email: string;
+	password: string;
+}
