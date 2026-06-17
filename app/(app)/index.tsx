@@ -22,9 +22,9 @@ export default function MyCoursePage() {
 		}
 	};
 
-	// useEffect(() => {
-	// 	login();
-	// }, []);
+	useEffect(() => {
+		login();
+	}, []);
 
 	return (
 		<View>
