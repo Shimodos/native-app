@@ -3,28 +3,52 @@ import { Input } from '../shared/input/input';
 import { Colors, Fonts, Gaps } from '../shared/tokens';
 import { Button as CustomButton } from '../shared/buttons/button';
 import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CustomLink } from '../shared/CustomLink/CustomLink';
+import { loginAtom } from '../entities/auth/model/auth.state';
+import { useAtom } from 'jotai';
+import { router } from 'expo-router';
 
 export default function Login() {
-	const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+	const [localErrorMessage, setLocalErrorMessage] = useState<string | undefined>(undefined);
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [{ access_token, error, isLoading }, login] = useAtom(loginAtom);
 
-	const alert = () => {
-		setErrorMessage('An error occurred. Please try again later.');
-		setTimeout(() => {
-			setErrorMessage(undefined);
-		}, 3000);
+	const submit = () => {
+		if (!email) {
+			setLocalErrorMessage('Please enter email.');
+			return;
+		}
+		if (!password) {
+			setLocalErrorMessage('Please enter password.');
+			return;
+		}
+		setLocalErrorMessage(undefined);
+		login({ email, password });
 	};
+
+	useEffect(() => {
+		if (error) {
+			setLocalErrorMessage(error);
+		}
+	}, [error]);
+
+	useEffect(() => {
+		if (access_token) {
+			router.replace('/(app)');
+		}
+	}, [access_token]);
 
 	return (
 		<View style={styles.container}>
-			<ErrorNotification message={errorMessage} />
+			<ErrorNotification message={localErrorMessage} />
 			<View style={styles.content}>
 				<Text style={styles.textStyle}>AntiNavi</Text>
 				<View style={styles.form}>
-					<Input placeholder="Email" />
-					<Input placeholder="Password" isPassword />
-					<CustomButton title="Login" onPress={alert} />
+					<Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
+					<Input placeholder="Password" isPassword onChangeText={(text) => setPassword(text)} />
+					<CustomButton title="Login" onPress={submit} />
 				</View>
 				<CustomLink href="/course/ts" text="Recover password" />
 			</View>

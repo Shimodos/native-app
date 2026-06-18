@@ -23,8 +23,6 @@ export const loginAtom = atom(
 			const response = await axios.post<IAuthResponse>(API.login, {
 				email,
 				password,
-				// email: 'partisan@bk.ru',
-				// password: 'J5knFU3PqsXNVKv',
 			});
 			set(authAtom, {
 				access_token: response.data.accessToken,
