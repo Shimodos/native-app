@@ -48,9 +48,9 @@ export default function Login() {
 				<View style={styles.form}>
 					<Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
 					<Input placeholder="Password" isPassword onChangeText={(text) => setPassword(text)} />
-					<CustomButton title="Login" onPress={submit} />
+					<CustomButton title="Login" isLoading={isLoading} onPress={submit} />
 				</View>
-				<CustomLink href="/course/ts" text="Recover password" />
+				<CustomLink href="/restore" text="Recover password" />
 			</View>
 		</View>
 	);

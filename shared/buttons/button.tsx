@@ -6,10 +6,15 @@ import {
 	Text,
 	Animated,
 	GestureResponderEvent,
+	ActivityIndicator,
 } from 'react-native';
 import { Colors, Fonts, FontSizes, Radius } from '../tokens';
 
-export function Button({ title, ...props }: PressableProps & { title: string }) {
+export function Button({
+	title,
+	isLoading,
+	...props
+}: PressableProps & { title: string; isLoading?: boolean }) {
 	const animatedValue = useRef(new Animated.Value(100)).current;
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
@@ -50,7 +55,11 @@ export function Button({ title, ...props }: PressableProps & { title: string }) 
 					backgroundColor: color,
 				}}
 			>
-				<Text style={styles.text}>{title}</Text>
+				{isLoading ? (
+					<ActivityIndicator size="large" color={Colors.white} />
+				) : (
+					<Text style={styles.text}>{title}</Text>
+				)}
 			</Animated.View>
 		</Pressable>
 	);

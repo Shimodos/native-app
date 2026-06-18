@@ -1,6 +1,7 @@
-import { Redirect, SplashScreen, Stack } from 'expo-router';
+import { Redirect, SplashScreen } from 'expo-router';
 import { loginAtom } from '../../entities/auth/model/auth.state';
 import { useAtomValue } from 'jotai';
+import { Drawer } from 'expo-router/drawer';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -12,8 +13,8 @@ export default function AppLayout() {
 	}
 
 	return (
-		<Stack>
-			<Stack.Screen name="index" />
-		</Stack>
+		<Drawer>
+			<Drawer.Screen name="index" />
+		</Drawer>
 	);
 }
