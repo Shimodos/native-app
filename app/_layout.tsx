@@ -69,6 +69,10 @@ function RootStack() {
 		>
 			<Stack.Screen name="login" />
 			<Stack.Screen name="restore" />
+			<Stack.Screen
+				name="(app)"
+				options={{ contentStyle: { paddingTop: 0, backgroundColor: Colors.black } }}
+			/>
 		</Stack>
 	);
 }

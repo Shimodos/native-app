@@ -1,5 +1,6 @@
 export const Colors = {
 	black: '#16171D',
+	blackLight: '#1E1F28',
 	gray: '#afb2bf',
 	violetDark: '#2e2d3d',
 	primary: '#6c38cc',
@@ -24,6 +25,7 @@ export const Radius = {
 export const FontSizes = {
 	fs16: 16,
 	fs18: 18,
+	fs20: 20,
 	fs24: 24,
 };
 
