@@ -7,24 +7,18 @@ import { API } from '../../user/api/api';
 
 const storage = createJSONStorage<AuthState>(() => AsyncStorage);
 
-export const authAtom = atomWithStorage<AuthState>(
-	'auth',
-	{
-		access_token: null,
-		isLoading: false,
-		error: null,
-	},
-	storage,
-);
+const INITIAL_AUTH_STATE = {
+	access_token: null,
+	isLoading: false,
+	error: null,
+};
+
+export const authAtom = atomWithStorage<AuthState>('auth', INITIAL_AUTH_STATE, storage);
 
 export const loginAtom = atom(
 	(get) => get(authAtom),
 	async (_get, set, { email, password }: IloginRequest) => {
-		set(authAtom, {
-			access_token: null,
-			isLoading: true,
-			error: null,
-		});
+		set(authAtom, INITIAL_AUTH_STATE);
 		try {
 			const response = await axios.post<IAuthResponse>(API.login, {
 				email,
@@ -41,14 +35,12 @@ export const loginAtom = atom(
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				set(authAtom, {
-					access_token: null,
-					isLoading: false,
+					...INITIAL_AUTH_STATE,
 					error: error.response?.data?.message || 'Login failed',
 				});
 			} else {
 				set(authAtom, {
-					access_token: null,
-					isLoading: false,
+					...INITIAL_AUTH_STATE,
 					error: 'An unexpected error occurred',
 				});
 			}
@@ -56,6 +48,10 @@ export const loginAtom = atom(
 		}
 	},
 );
+
+export const logoutAtom = atom(null, (_get, set) => {
+	set(authAtom, INITIAL_AUTH_STATE);
+});
 
 export interface AuthState {
 	access_token: string | null;
