@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai';
 import { Drawer } from 'expo-router/drawer';
 import { Colors, FontSizes } from '../../shared/tokens';
 import { MenuButton } from '../../features/layout/ui/MenuButton/MenuButton';
+import { CustomDrawer } from '../../entities/layout/ui/CustomDrawer/CustomDrawer';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -16,6 +17,7 @@ export default function AppLayout() {
 
 	return (
 		<Drawer
+			drawerContent={(props) => <CustomDrawer {...props} />}
 			screenOptions={({ navigation }) => ({
 				headerStyle: {
 					backgroundColor: Colors.blackLight,
